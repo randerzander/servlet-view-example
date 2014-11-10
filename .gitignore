@@ -1,2 +1,7 @@
 *.sh
 target/
+
+servlet-view-example.iml
+
+.idea
+
