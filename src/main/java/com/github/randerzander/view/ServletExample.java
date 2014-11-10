@@ -20,7 +20,6 @@ public class ServletExample extends HttpServlet {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
 
-
     @Autowired
     private DataSource dataSource;
 
@@ -30,39 +29,21 @@ public class ServletExample extends HttpServlet {
     }
 
     private void queryTables() {
-        Connection connection = null;
-        Statement stmt = null;
-        try {
-            final String sql = "show tables";
-            connection = dataSource.getConnection();
-            stmt = connection.createStatement();
+        final String sql = "show tables";
 
+        try (Connection connection = dataSource.getConnection();
+             Statement stmt = connection.createStatement()
+        ) {
             log.debug("Running: " + sql);
 
-            ResultSet res = stmt.executeQuery(sql);
+            ResultSet rs = stmt.executeQuery(sql);
 
-            while (res.next()) {
-                log.debug(res.getString(1));
+            while (rs.next()) {
+                log.debug(rs.getString(1));
             }
-
 
         } catch (SQLException e) {
             log.error("error", e);
-        } finally {
-            if (stmt != null) {
-                try {
-                    stmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
         }
     }
 
