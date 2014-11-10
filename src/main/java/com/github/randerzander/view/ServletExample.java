@@ -26,6 +26,10 @@ public class ServletExample extends HttpServlet {
 
     @RequestMapping(value = "/tables", method = RequestMethod.GET)
     public void showTables() {
+        queryTables();
+    }
+
+    private void queryTables() {
         Connection connection = null;
         Statement stmt = null;
         try {
@@ -60,8 +64,6 @@ public class ServletExample extends HttpServlet {
                 }
             }
         }
-
-
     }
 
 }
