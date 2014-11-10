@@ -22,22 +22,22 @@ limitations under the License. Kerberos, LDAP, Custom. Binary/Htt
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
          version="2.4">
 
-  <display-name>Example Servlet Application</display-name>
-  <description>
-    This is the Example servlet view application.
-  </description>
-  <servlet>
-    <servlet-name>example</servlet-name>
-    <servlet-class>com.github.randerzander.view.ServletExample</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>example</servlet-name>
-    <url-pattern>/services/*</url-pattern>
-    <url-pattern>/services</url-pattern>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>default</servlet-name>
-    <url-pattern>/ui/*</url-pattern>
-  </servlet-mapping>
+    <display-name>Example Servlet Application</display-name>
+    <description>
+        This is the Example servlet view application.
+    </description>
+    <servlet>
+        <servlet-name>example</servlet-name>
+        <servlet-class>com.github.randerzander.view.ServletExample</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>example</servlet-name>
+        <url-pattern>/services/*</url-pattern>
+        <url-pattern>/services</url-pattern>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/ui/*</url-pattern>
+    </servlet-mapping>
 </web-app>
