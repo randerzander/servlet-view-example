@@ -1,2 +1,17 @@
-EXAMPLE
-<script src="test.js"></script>
+<link href="ui/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<center>
+Query:
+<p>
+<textarea rows="6" cols="75" id="txtquery"></textarea>
+<p>
+<button type="button" class="btn btn-default btn-default" onclick="submit()">Submit</button>
+<p>
+Result:
+<div id="result">
+  <table id="rows"><thead></thead><tbody></tbody></table>
+</div>
+</center>
+<script src="ui/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="ui/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="ui/bower_components/dynatable/jquery.dynatable.js"></script>
+<script src="ui/index.js"></script>

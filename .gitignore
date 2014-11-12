@@ -1,7 +1,6 @@
 *.sh
+*.swp
 target/
-
 servlet-view-example.iml
-
 .idea
-
+src/main/resources/ui/bower_components/

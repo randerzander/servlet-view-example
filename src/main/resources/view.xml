@@ -15,15 +15,10 @@ See the License for the specific language governing permissions and
 limitations under the License. Kerberos, LDAP, Custom. Binary/Htt
 -->
 <view>
-    <name>EXAMPLE_VIEW</name>
-    <label>ExampleView</label>
+    <name>example</name>
+    <label>example</label>
     <version>1.0.0</version>
-    <parameter>
-        <name>name</name>
-        <description>The name for the greeting. Defaults to current user.</description>
-        <required>false</required>
-    </parameter>
     <instance>
-        <name>Example</name>
+      <name>example</name>
     </instance>
 </view>
