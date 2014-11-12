@@ -1,3 +1,5 @@
+You'll need maven, nodejs, npm, and brunch (npm install -g brunch) installed to build Ambari.
+
 Setup:
 ```
 git clone https://github.com/apache/ambari
