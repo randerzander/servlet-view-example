@@ -16,7 +16,7 @@ import java.sql.Statement;
 
 @Controller
 @RequestMapping("/hive")
-public class ServletExample extends HttpServlet {
+public class ServletExample {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
 
