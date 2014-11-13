@@ -2,9 +2,7 @@ package com.github.randerzander.view;
 
 import org.apache.ambari.view.ViewContext;
 
-import java.io.BufferedReader;
 import org.json.JSONObject;
-import java.util.ArrayList;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -12,9 +10,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import java.util.ArrayList;
+import java.sql.*;
+
+import java.io.BufferedReader;
+import java.util.Properties;
+import java.io.InputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.*;
 
 public class Services extends HttpServlet {
 
@@ -28,13 +32,20 @@ public class Services extends HttpServlet {
       ServletContext context = config.getServletContext();
       viewContext = (ViewContext) context.getAttribute(ViewContext.CONTEXT_ATTRIBUTE);
 
+      String host = null;
+      try {
+        Properties properties = new Properties();
+        InputStream stream = getClass().getClassLoader().getResourceAsStream("config.properties");
+        properties.load(stream);
+        host = properties.getProperty("hive.host");
+      } catch(java.io.IOException e) { e.printStackTrace(); System.exit(1); }
+
       try {
         Class.forName("org.apache.hive.jdbc.HiveDriver");
       } catch (ClassNotFoundException ex) {
         System.out.println("Error: unable to load driver class!");
         System.exit(1);
       }
-      String host = "n0.dev:10000";
       try {
         connection = DriverManager.getConnection("jdbc:hive2://" + host + "/default", "", "");
       } catch (SQLException e) { e.printStackTrace(); }

@@ -1,5 +1,7 @@
 You'll need maven, nodejs, npm, and brunch (npm install -g brunch) installed to build Ambari.
 
+Make sure to edit /src/main/resources/config.properties and set your hive.host config (Example localhost:10000)
+
 Setup:
 ```
 git clone https://github.com/apache/ambari
