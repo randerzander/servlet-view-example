@@ -1,6 +1,8 @@
 $('#submit').on('click', function(){
-  var $btn = $(this).button('loading');
-  $.ajax({
+  cleanup(); //Clear existing populated results
+  var $btn = $(this).button('loading'); //Set 'Submit' button loading state
+
+  $.ajax({ //Submit the query
     type: 'POST',
     url: 'services',
     data: $('#txtquery').val(),
@@ -23,31 +25,24 @@ $('#submit').on('click', function(){
         });
         $('#rows>tbody').append(row + '</tr>');
       });
-      $btn.button('reset');
+      $btn.button('reset'); //clear 'Submit' button loading state
 
-      //Make csv results downloadable
+      //Create CSV link
       var link = document.createElement('a');
       link.setAttribute('href', encodeURI(csv));
       link.setAttribute('download', 'result.csv');
       link.innerHTML='Save CSV';
       $('#csvlink').removeClass('hidden').append(link);
 
-      //Update panes collapse state
+      //Update collapsible panes
       $('#collapseOne').removeClass('in').addClass('collapsing');
       $('#collapseTwo').addClass('in');
     }
   });
 });
 
-/* For future integration with datatables or dynatable */
-function toRecords(result){
-  var data = [];
-  $.each(result.result, function(i, v){
-    var record = {};
-    $.each(v, function(index, val){
-      record[result.columns[index]] = val;
-    })
-    data.push(record);
-  });
-  return data;
+function cleanup(){ //Clear old results
+  $('#rows>thead>tr>th').remove();
+  $('#rows>tbody>tr').remove();
+  $('#csvlink>a').remove();
 }
