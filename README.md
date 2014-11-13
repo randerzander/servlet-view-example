@@ -4,8 +4,8 @@ Make sure to edit /src/main/resources/config.properties and set your hive.host c
 
 Install Pre-built jar:
 ```
-rm -rf /var/lib/ambari-server/resources/views/work/example\{1.0.0\}
-cp target/servlet-view-example-1.0-SNAPSHOT-view.jar /var/lib/ambari-server/resources/views/
+sudo rm -rf /var/lib/ambari-server/resources/views/work/example\{1.0.0\}
+sudo cp target/servlet-view-example-1.0-SNAPSHOT-view.jar /var/lib/ambari-server/resources/views/
 ```
 
 Build:
