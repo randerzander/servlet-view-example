@@ -4,3 +4,4 @@ target/
 servlet-view-example.iml
 .idea
 src/main/resources/ui/bower_components/
+src/main/resources/WEB-INF/lib/
