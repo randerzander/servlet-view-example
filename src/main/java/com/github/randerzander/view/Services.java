@@ -75,33 +75,34 @@ public class Services extends HttpServlet {
       JSONObject json = new JSONObject();
       json.put("query", query);
 
+      //JDBC driver doesn't like semicolons -- remove it if necessary
       if (query.length() > 0 && query.charAt(query.length()-1)==';') {
         query = query.substring(0, query.length()-1);
       }
 
+      //Run the query and build the response
       PrintWriter writer = response.getWriter();
+      ArrayList<String[]> rows = new ArrayList<String[]>();
       try {
-        ResultSet res = connection.createStatement().executeQuery(query); //Run query
+        ResultSet res = connection.createStatement().executeQuery(query);
         
-        //Write out column headers
+        //Write column headers
         ResultSetMetaData rms = res.getMetaData();
         String[] cols = new String[rms.getColumnCount()];
         for (int i=0; i < cols.length; i++){ cols[i] = rms.getColumnName(i+1);}
         json.put("columns", cols);
 
-        //Write out each row in the result set
-        ArrayList<String[]> rows = new ArrayList<String[]>();
-        String[] row = new String[cols.length];
+        //Write each row from the result set
         while (res.next()) {
+          String[] row = new String[cols.length];
           for (int i=0; i < cols.length; i++){ row[i] = res.getString(i+1); }
           rows.add(row);
         }
-        json.put("result", rows);
-
-        writer.println(json.toString());
-      } catch (SQLException e) {
-        json.put("error", e.toString());
-        writer.println(json.toString());
+      }catch (SQLException e) {
+        json.put("columns", new String[]{"Error"});
+        rows.add(new String[]{e.toString()});
       }
+      json.put("result", rows);
+      writer.println(json.toString());
     }
 }

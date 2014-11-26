@@ -9,7 +9,6 @@ $('#submit').on('click', function(){
     success: function(data){
       var result = JSON.parse(data);
       var csv = "data:text/csv;charset=utf-8,";
-
       //Append headers
       csv += result.columns.join(',') + '\n';
       $.each(result.columns, function(i, v){
