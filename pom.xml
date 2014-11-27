@@ -50,6 +50,7 @@
             <scope>compile</scope>
         </dependency>
 
+        <!--
         <dependency>
             <groupId>org.apache.hive</groupId>
             <artifactId>hive-jdbc</artifactId>
@@ -73,6 +74,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        -->
 
         <dependency>
             <groupId>org.apache.hadoop</groupId>
@@ -85,7 +87,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
 
     </dependencies>
 
