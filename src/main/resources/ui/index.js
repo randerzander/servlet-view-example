@@ -1,6 +1,3 @@
-$(document).ready(function(){
-});
-
 $('#submit').on('click', function(){
   cleanup(); //Clear existing populated results
   var $btn = $(this).button('loading'); //Set 'Submit' button loading state
